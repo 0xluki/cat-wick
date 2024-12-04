@@ -3,12 +3,14 @@ const morgan = require("morgan");
 const mongoose = require("mongoose");
 
 const authRoutes = require("./routes/auth");
+const productRouts = require("./routes/product");
 
 const app = express();
 //middlewares
 app.use(morgan("dev"));
 app.use(express.json());
 app.use("/api", authRoutes);
+app.use("/api", productRouts);
 //global error handler
 app.use((err, req, res, next) => {
   const status = err.status || 500;
